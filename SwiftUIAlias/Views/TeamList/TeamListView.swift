@@ -185,7 +185,7 @@ struct TeamListItem: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 5, style: .continuous)
-                        .fill(team.color!)
+                        .fill(team.color)
                         .frame(height: 60)
                         .shadow(color: Color.black, radius: 5, x: 0, y: 0 )
                     

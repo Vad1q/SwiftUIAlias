@@ -17,6 +17,10 @@ struct MainView: View {
     let titleZ = 1.0
     let viewZ = 2.0
     
+    var isTitleVisible: Bool {
+        return router.current == .home
+    }
+    
     var body: some View {
         
         ZStack {
@@ -29,8 +33,8 @@ struct MainView: View {
                 .resizable()
                 .zIndex(titleZ)
                 .scaledToFit()
-                .opacity(router.current == .home ? 1.0 : 0.0)
-                .animation(.easeInOut(duration: 0.2))
+                .opacity(isTitleVisible ? 1.0 : 0.0)
+                .animation(.easeInOut(duration: 0.2), value: isTitleVisible)
             
             AnimatedContentView(content: {
                 switch router.current {

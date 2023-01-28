@@ -13,19 +13,14 @@ class Team: ObservableObject, Identifiable {
     @Published var editMode = false
     @Published var score = 0
     @Published var shownWords: [[String: String]] = []
-    @Published var color: Color?
+    @Published var color: Color
     
-    init() {
-        self.generateRandomName()
-        self.color = teamColors.randomElement()!
+    init(name: String, color: Color) {
+        self.name = name
+        self.color = color
     }
     
-    func generateRandomName() {
-        let name = teamNames.randomElement()
-        self.name = name!
-    }
-    
-    func rename(newName: String) {
+    func setName(newName: String) {
         self.name = newName
     }
     
@@ -41,14 +36,8 @@ class Team: ObservableObject, Identifiable {
         self.shownWords += words
     }
     
-    func changeColor() {
-        var newColor = teamColors.randomElement()!
-        
-        while (newColor == self.color) {
-            newColor = teamColors.randomElement()!
-        }
- 
-        self.color = newColor
+    func setColor(color: Color) {
+        self.color = color
     }
 }
 
